@@ -5,6 +5,6 @@ export interface Funcionario{
     departamento: string;
     ativo: boolean;
     turno: string;
-    dataDeCraicao? : string;
-    dataDeAlteraca? : string; 
+    dataDeCriacao? : string;
+    dataDeAlteracao? : string; 
 }
