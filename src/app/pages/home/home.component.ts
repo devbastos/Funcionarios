@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
         console.log(data.dados)
       })
       this.funcionarios = data.dados;
-      this.funcionariosGeral = data.dados; 
+      this.funcionariosGeral = data.dados;
     });
   }
 
