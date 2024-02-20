@@ -1,7 +1,8 @@
 <div class="container-fluid funcionario-box">
     <div class="row">
         <div class="col-6 mt-4">
-            <button type="button" class="btn btn-dark">Cadastrar novo funcionário</button>
+            <!-- <button type="button" class="btn btn-dark" (click)="cadastroForm()">Novo funcionário</button> -->
+            <a type="button" class="btn btn-dark" routerLink="/cadastro">Novo funcionário</a>
         </div>
     </div>
 
@@ -62,7 +63,7 @@
                         <td>{{ funcionario.departamento }}</td>
 
                         <td>
-                            <button type="button" class="btn btn-warning me-1">Editar</button>
+                            <a type="button" class="btn btn-warning me-1" routerLink="/editar/, funcionario.id">Editar</a>
                             <button type="button" class="btn btn-info me-1">Detalhes</button>
                             <button type="button" class="btn btn-danger">Excluir</button>
                         </td>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Funcionario } from '../../Models/Funcionarios';
 import { FuncionarioService } from '../../services/funcionario.service';
 import {CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,6 @@ export class HomeComponent implements OnInit {
       dados.map((item) => {
         item.dataDeCriacao = new Date(item.dataDeCriacao!).toLocaleDateString('pt-BR');
         item.dataDeAlteracao = new Date(item.dataDeAlteracao!).toLocaleDateString('pt-BR');
-        console.log(data.dados)
       })
       this.funcionarios = data.dados;
       this.funcionariosGeral = data.dados;
