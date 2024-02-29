@@ -1,38 +1,40 @@
 <div class="container-fluid funcionario-box">
-    <div class="row">
-        <div class="col-6 mt-4">
-            <!-- <button type="button" class="btn btn-dark" (click)="cadastroForm()">Novo funcionário</button> -->
-            <button type="button" class="btn btn-dark" routerLink="/cadastro">Novo funcionário</button>
-        </div>
-    </div>
+   
+        <app-alert-component [tipo]="tipo" [titulo]="titulo" [mensagem]="mensagem" *ngIf="funcionarioInativado"></app-alert-component>
 
-    <div class="row">
+
+
+    <div class="row" *ngIf="!isLoading">
         <div class="col-12 mt-4">
             <h5>Filtros</h5>
             <hr class="col-4">
         </div>
+
+        <div class="row">
+            <div class="col-4">
+                <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default" placeholder="Nome de registro" (input)="nome($event)">
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default" placeholder="Sobrenome de Registro"
+                    (input)="sobrenome($event)">
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default" placeholder="Departamento de Registro"
+                    (input)="departamento($event)">
+            </div>
+        </div>
     </div>
 
-    <div class="row">
-        <div class="col-4">
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" placeholder="Nome de registro"
-                (input)="nome($event)">
-        </div>
-        <div class="col-4">
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" placeholder="Sobrenome de Registro"
-                (input)="sobrenome($event)">
-        </div>
-        <div class="col-4">
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" placeholder="Departamento de Registro"
-                (input)="departamento($event)">
+    <div class="container-fluid d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-success mt-5" role="status" *ngIf="isLoading">
+            <span class="visually-hidden">Loading...</span>
         </div>
     </div>
 
-
-    <div class="row">
+    <div class="row" *ngIf="!isLoading">
         <div class="col-12">
             <table class="table">
 
@@ -43,12 +45,13 @@
                         <th scope="col-3">Sobrenome</th>
                         <th scope="col-2">Departamento</th>
                         <th scope="col-2">Ações</th>
+                        <th scope="col-2"><button type="button" class="btn btn-dark" routerLink="/cadastro">Novo
+                                funcionário</button></th>
                     </tr>
                 </thead>
 
                 <tbody *ngFor="let funcionario of funcionarios">
                     <tr>
-
                         <td>
                             <div class="ativo" *ngIf="funcionario.ativo == true; else inativo">
                                 <img src="../../../assets/Images/Ativo.png" style="height:20px; width: 20px">
@@ -63,10 +66,14 @@
                         <td>{{ funcionario.departamento }}</td>
 
                         <td>
-                            <button type="button" class="btn btn-warning me-1" routerLink="/editar/, {{funcionario.id}}">Editar</button>
-                            <button type="button" class="btn btn-info me-1">Detalhes</button>
-                            <button type="button" class="btn btn-danger">Excluir</button>
+                            <button type="button" class="btn btn-warning me-1"
+                                routerLink="/editar/{{funcionario.id}}">Editar</button>
+                            <button type="button" class="btn btn-info me-1"
+                                routerLink="/detalhes/{{funcionario.id}}">Detalhes</button>
+                            <button type="button" class="btn btn-danger"
+                                (click)="InativaFuncionario()">Inativar</button>
                         </td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

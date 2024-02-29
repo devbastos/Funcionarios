@@ -1,0 +1,79 @@
+<mat-card>
+
+    <div>
+        <h1 class="text-light">Detalhes Funcionário</h1>
+    </div>
+
+    <div *ngIf="funcionario">
+
+        <form>
+
+
+            <div class="input-box">
+                <mat-form-field>
+                    <label>Nome:</label>
+                    <input matInput type="text" class="form-control text-dark" value="{{funcionario.nome}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input-box">
+                <mat-form-field>
+                    <label>Sobrenome:</label>
+                    <input matInput type="text" class="form-control  text-dark" value="{{funcionario.sobrenome}}"
+                        disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input-box">
+                <mat-form-field>
+                    <label>Departamento:</label>
+                    <input matInput type="text" class="form-control  text-dark" id="Livro"
+                        value="{{funcionario.departamento}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input-box">
+                <mat-form-field>
+                    <label>Turno:</label>
+                    <input matInput type="text" class="form-control  text-dark" asp-for="LivroEmprestado" id="Livro"
+                        value="{{funcionario.turno}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input-box">
+                <mat-form-field>
+                    <label>Situação:</label>
+                    <input matInput type="text" class="form-control  text-dark" asp-for="LivroEmprestado" id="Livro"
+                        value="{{funcionario.ativo == true ? 'Ativo' : 'Inativo'}}" disabled>
+                </mat-form-field>
+            </div>
+
+
+            <div class="input-box">
+                <mat-form-field>
+                    <label>Data de Criação:</label>
+                    <input matInput type="text" class="form-control  text-dark" asp-for="LivroEmprestado" id="Livro"
+                        value="{{funcionario.dataDeCriacao}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input-box">
+                <mat-form-field>
+                    <label>Data de Alteração:</label>
+                    <input matInput type="text" class="form-control  text-dark" asp-for="LivroEmprestado" id="Livro"
+                        value="{{funcionario.dataDeAlteracao}}" disabled>
+                </mat-form-field>
+            </div>
+
+
+
+            <div class="btn-box">
+                <a routerLink="" mat-raised-button>Voltar</a>
+            </div>
+
+
+        </form>
+    </div>
+
+
+</mat-card>

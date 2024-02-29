@@ -19,7 +19,7 @@ export class CadastroComponent {
   }
   
   createFuncionario(funcionario: Funcionario){
-    this.funcionarioService.createFuncionario(funcionario).subscribe((data) => {
+    this.funcionarioService.CreateFuncionario(funcionario).subscribe((data) => {
     })
   }
 
