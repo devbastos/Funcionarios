@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FuncionarioFormComponent } from '../../components/funcionario-form/funcionario-form.component';
 import { Funcionario } from '../../Models/Funcionarios';
 import { FuncionarioService } from '../../services/funcionario.service';
@@ -8,12 +8,12 @@ import { FuncionarioService } from '../../services/funcionario.service';
 @Component({
   selector: 'app-editar',
   standalone: true,
-  imports: [FuncionarioFormComponent, CommonModule],
+  imports: [FuncionarioFormComponent, CommonModule, RouterModule,],
   templateUrl: './editar.component.html',
   styleUrl: './editar.component.scss'
 })
 export class EditarComponent implements OnInit{
-btnAcao: string ='Confirmar'
+btnAcao: string ='Voltar'
 btnTitulo: string='Editar Funcionário'
 funcionario!: Funcionario;
 
