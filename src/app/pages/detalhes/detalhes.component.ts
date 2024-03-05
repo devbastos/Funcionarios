@@ -1,46 +1,53 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Funcionario } from '../../Models/Funcionarios';
 import { FuncionarioService } from '../../services/funcionario.service';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { AlertComponent } from '../../components/alert-component/alert-component.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @Component({
   selector: 'app-detalhes',
   standalone: true,
-  imports: [RouterModule, CommonModule, BrowserModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatTableModule, MatInputModule, MatSelectModule, MatDialogModule, MatSelectModule],
+  imports: [CommonModule, RouterModule, AlertComponent, FormsModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatTableModule,
+    MatInputModule, MatSelectModule, MatDialogModule, MatSelectModule, ],
   templateUrl: './detalhes.component.html',
-  styleUrl: './detalhes.component.scss'
+  styleUrl: './detalhes.component.scss',
 })
-export class DetalhesComponent {
+export class DetalhesComponent implements OnInit {
   funcionario?: Funcionario;
-  id!:number;
+  id!: number;
 
 
-  constructor(private funcionarioService : FuncionarioService, private route: ActivatedRoute, private router: Router){}
+  constructor(
+    private funcionarioService: FuncionarioService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
   isLoading = true;
 
   ngOnInit(): void {
-  const id = Number(this.route.snapshot.paramMap.get('id'));
-  
-  this.funcionarioService.GetFuncionario(id).subscribe((data) =>{
-    const dados = data.dados;
-    dados.dataDeCriacao = new Date(dados.dataDeCriacao!).toLocaleDateString("pt-BR");
-    dados.dataDeAlteracao = new Date(dados.dataDeAlteracao!).toLocaleDateString("pt-BR");
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.funcionario = dados;
-    this.isLoading = false;
-  } )
-  
-  
+    this.funcionarioService.GetFuncionario(this.id).subscribe((data) => {
+      const dados = data.dados;
+      dados.dataDeCriacao = new Date(dados.dataDeCriacao!).toLocaleDateString(
+        'pt-BR'
+      );
+      dados.dataDeAlteracao = new Date(
+        dados.dataDeAlteracao!
+      ).toLocaleDateString('pt-BR');
+
+      this.funcionario = dados;
+      this.isLoading = false;
+    });
   }
 }

@@ -19,8 +19,10 @@ export class CadastroComponent {
   }
   
   createFuncionario(funcionario: Funcionario){
+    console.log(funcionario);
     this.funcionarioService.CreateFuncionario(funcionario).subscribe((data) => {
     })
   }
+  
 
 }
