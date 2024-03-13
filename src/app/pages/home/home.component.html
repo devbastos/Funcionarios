@@ -1,27 +1,31 @@
-<app-alert-component [tipo]="tipo" [titulo]="titulo" [mensagem]="mensagem" *ngIf="funcionarioInativado"></app-alert-component>
+<app-toolbar></app-toolbar>
+
+<app-alert-component [tipo]="tipo" [titulo]="titulo" [mensagem]="mensagem" *ngIf="funcionarioInativado">
+</app-alert-component>
 
 <mat-card>
     <div class="funcionario-box">
-      <button routerLink="cadastro" mat-raised-button color="primary" class="full-width-btn">Cadastrar novo funcionário</button>
-      
-      <div class="filter-section">
-        <mat-form-field class="flex-item">
-          <mat-label>Nome:</mat-label>
-          <input matInput type="text" placeholder="Qual registro está buscando?" (input)="nome($event)">
-        </mat-form-field>
-        <mat-form-field class="flex-item">
-          <mat-label>Sobrenome:</mat-label>
-          <input matInput type="text" placeholder="Qual registro está buscando?" (input)="sobrenome($event)">
-        </mat-form-field>
-        <mat-form-field class="flex-item">
-          <mat-label>Departamento:</mat-label>
-          <input matInput type="text" placeholder="Qual registro está buscando?" (input)="departamento($event)">
-        </mat-form-field>
-      </div>
+        <button routerLink="cadastro" mat-raised-button color="primary" class="full-width-btn">Cadastrar novo
+            funcionário</button>
+
+        <div class="filter-section">
+            <mat-form-field class="flex-item">
+                <mat-label>Nome:</mat-label>
+                <input matInput type="text" placeholder="Qual registro está buscando?" (input)="nome($event)">
+            </mat-form-field>
+            <mat-form-field class="flex-item">
+                <mat-label>Sobrenome:</mat-label>
+                <input matInput type="text" placeholder="Qual registro está buscando?" (input)="sobrenome($event)">
+            </mat-form-field>
+            <mat-form-field class="flex-item">
+                <mat-label>Departamento:</mat-label>
+                <input matInput type="text" placeholder="Qual registro está buscando?" (input)="departamento($event)">
+            </mat-form-field>
+        </div>
     </div>
-    
+</mat-card>
 
-
+<mat-card>
     <table mat-table [dataSource]="funcionarios" class="mat-elevation-z8">
 
         <ng-container matColumnDef="Situacao">
@@ -58,15 +62,13 @@
             <td mat-cell *matCellDef="let funcionario">
                 <a routerLink="editar/{{funcionario.id}}" mat-raised-button color="accent">Editar</a>
                 <a routerLink="detalhes/{{funcionario.id}}" mat-raised-button>Detalhes</a>
-                <a  (click)="InativaFuncionario(funcionario.id)"  mat-raised-button color="warn">Inativar</a>
+                <a (click)="InativaFuncionario(funcionario.id)" mat-raised-button color="warn">Inativar</a>
             </td>
         </ng-container>
 
-    
+
 
 
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
     </table>
-
-</mat-card>

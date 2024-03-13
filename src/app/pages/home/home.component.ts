@@ -12,7 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
+import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -29,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
+    ToolbarComponent,    
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
