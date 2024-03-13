@@ -1,25 +1,25 @@
+<app-alert-component [tipo]="tipo" [titulo]="titulo" [mensagem]="mensagem" *ngIf="funcionarioInativado"></app-alert-component>
+
 <mat-card>
-
-    <app-alert-component [tipo]="tipo" [titulo]="titulo" [mensagem]="mensagem" *ngIf="funcionarioInativado"></app-alert-component>
-
     <div class="funcionario-box">
-        <button routerLink="cadastro" mat-raised-button color="primary">Cadastrar novo fucionário</button>
-        <div class="input-box">
-            <mat-form-field>
-                <mat-label>Nome:</mat-label>
-                <input matInput type="text" placeholder="Qual registro está buscando?" (input)="nome($event)">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>sobrenome:</mat-label>
-                <input matInput type="text" placeholder="Qual registro está buscando?" (input)="sobrenome($event)">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>departamento:</mat-label>
-                <input matInput type="text" placeholder="Qual registro está buscando?" (input)="departamento($event)">
-            </mat-form-field>
-        </div>
+      <button routerLink="cadastro" mat-raised-button color="primary" class="full-width-btn">Cadastrar novo funcionário</button>
+      
+      <div class="filter-section">
+        <mat-form-field class="flex-item">
+          <mat-label>Nome:</mat-label>
+          <input matInput type="text" placeholder="Qual registro está buscando?" (input)="nome($event)">
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Sobrenome:</mat-label>
+          <input matInput type="text" placeholder="Qual registro está buscando?" (input)="sobrenome($event)">
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Departamento:</mat-label>
+          <input matInput type="text" placeholder="Qual registro está buscando?" (input)="departamento($event)">
+        </mat-form-field>
+      </div>
     </div>
-
+    
 
 
     <table mat-table [dataSource]="funcionarios" class="mat-elevation-z8">

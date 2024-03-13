@@ -13,7 +13,7 @@ import { FuncionarioService } from '../../services/funcionario.service';
   styleUrl: './editar.component.scss'
 })
 export class EditarComponent implements OnInit{
-btnAcao: string ='Voltar'
+btnAcao: string ='Salvar'
 btnTitulo: string='Editar Funcionário'
 funcionario!: Funcionario;
 
@@ -33,10 +33,14 @@ this.funcionarioService.GetFuncionario(id).subscribe((data) =>{
 
 
 }
-editFuncionario(funcionario: Funcionario) {
-  this.funcionarioService.EditarFuncinario(funcionario).subscribe((data) =>{
+
+async editFuncionario(funcionario : Funcionario){
+
+  this.funcionarioService.EditarFuncinario(funcionario).subscribe(data => {
     this.router.navigate(['/']);
-  } )
+  });
+
 }
 
 }
+

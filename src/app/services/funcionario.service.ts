@@ -23,10 +23,8 @@ export class FuncionarioService {
 
 
   CreateFuncionario(funcionario: Funcionario) : Observable<Response<Funcionario[]>> {
-    console.dir(funcionario)
     return this.http.post<Response<Funcionario[]>>(`${this.apiUrl}`, funcionario);
   }
-
 
   EditarFuncinario(
     funcionario: Funcionario
