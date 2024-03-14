@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ComponentFactoryResolver } from '@angular/core';
 import { Router } from '@angular/router';
 import { FuncionarioFormComponent } from '../../components/funcionario-form/funcionario-form.component';
 import { Funcionario } from '../../Models/Funcionarios';
@@ -20,7 +20,8 @@ export class CadastroComponent {
   
   createFuncionario(funcionario: Funcionario){
     console.log(funcionario);
-    this.funcionarioService.CreateFuncionario(funcionario).subscribe((data) => {
+    this.funcionarioService.CreateFuncionario(funcionario).subscribe((data) => {       
+      this.router.navigate(['/']);
     })
   }
   

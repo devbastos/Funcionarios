@@ -52,5 +52,6 @@ export class FuncionarioFormComponent implements OnInit {
 
   submit(){
       this.onSubmit.emit(this.funcionarioForm.value);
+      
   }
 }

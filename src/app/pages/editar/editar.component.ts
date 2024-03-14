@@ -34,9 +34,9 @@ this.funcionarioService.GetFuncionario(id).subscribe((data) =>{
 
 }
 
-async editFuncionario(funcionario : Funcionario){
+async editarFuncionario(funcionario : Funcionario){
 
-  this.funcionarioService.EditarFuncinario(funcionario).subscribe(data => {
+  this.funcionarioService.EditarFuncionario(funcionario).subscribe(data => {
     this.router.navigate(['/']);
   });
 
